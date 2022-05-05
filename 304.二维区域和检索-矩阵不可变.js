@@ -10,14 +10,19 @@
  */
 var NumMatrix = function (matrix) {
     var m = matrix.length;
-    this.preSum = new Array(m) 
     var n = matrix[0].length;
+
+    this.preSum = new Array(m+1) 
     if (m == 0 || n == 0) return;
 
 
     for (var i = 1; i <= m; i++) {
-        if (!this.preSum[i]) {
-            this.preSum[i] = new Array(n) 
+        // 将和值默认为0
+        if (!this.preSum[i-1]) {
+            this.preSum[i-1] = new Array(n+1).fill(0) 
+        }
+        if(!this.preSum[i]){
+            this.preSum[i] = new Array(n+1).fill(0)
         }
         for (var j = 1; j <= n; j++) {
             this.preSum[i][j] = this.preSum[i - 1][j] + this.preSum[i][j - 1] + matrix[i - 1][j - 1] - this.preSum[i - 1][j - 1];
@@ -34,7 +39,7 @@ var NumMatrix = function (matrix) {
  * @return {number}
  */
 NumMatrix.prototype.sumRegion = function (row1, col1, row2, col2) {
-    return this.preSum[row2+1][col2+1] - this.preSum[row1][col2 + 1] - this.preSum[row2][col1] + this.preSum[row1][col1]
+    return this.preSum[row2+1][col2+1] - this.preSum[row1][col2 + 1] - this.preSum[row2+1][col1] + this.preSum[row1][col1]
 
 };
 
