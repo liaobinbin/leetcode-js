@@ -19,7 +19,7 @@
  * @param {TreeNode} right
  * @return {boolean}
  */
-var check = function(left, right){
+const check = function(left, right){
     if(left == null || right == null) return left == right;
     if(left.val != right.val) return false;
 
@@ -30,7 +30,7 @@ var check = function(left, right){
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isSymmetric = function(root) {
+const isSymmetric = function(root) {
     if(root == null) return true;
 
     return check(root.left, root.right)
