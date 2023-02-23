@@ -18,9 +18,9 @@
  * @param {ListNode} headB
  * @return {ListNode}
  */
-var getIntersectionNode = function(headA, headB) {
-    var p1 = headA;
-    var p2 = headB;
+const getIntersectionNode = function(headA, headB) {
+    let p1 = headA;
+    let p2 = headB;
     while(p1 != p2){
         if(p1 == null) {
             p1 = headB;
